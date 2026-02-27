@@ -10,6 +10,8 @@
 
 Το **DiffPriv-Gateway** είναι μια λύση ανοικτού κώδικα (Open-Source) που βοηθά τις Μικρομεσαίες Επιχειρήσεις να συμμορφωθούν με τον **GDPR**, εφαρμόζοντας **Διαφορική Ιδιωτικότητα** (Differential Privacy).
 
+[![Python application](https://github.com/Dionysis33/DiffPriv-Gateway/actions/workflows/python-app.yml/badge.svg)](https://github.com/Dionysis33/DiffPriv-Gateway/actions/workflows/python-app.yml)
+
 ---
 
 ## 📋 Πίνακας Περιεχομένων
