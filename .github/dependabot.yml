@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "pip" # Για τις Python βιβλιοθήκες στο requirements.txt
+    directory: "/"
+    schedule:
+      interval: "weekly" # Έλεγχος κάθε εβδομάδα
+    open-pull-requests-limit: 5
+    labels:
+      - "security"
+      - "dependencies"

@@ -7,8 +7,10 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python Version](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Dionysis33/DiffPriv-Gateway/graphs/commit-activity)
+[![Python application](https://github.com/Dionysis33/DiffPriv-Gateway/actions/workflows/python-app.yml/badge.svg)](https://github.com/Dionysis33/DiffPriv-Gateway/actions/workflows/python-app.yml)
 
 Το **DiffPriv-Gateway** είναι μια λύση ανοικτού κώδικα (Open-Source) που βοηθά τις Μικρομεσαίες Επιχειρήσεις να συμμορφωθούν με τον **GDPR**, εφαρμόζοντας **Διαφορική Ιδιωτικότητα** (Differential Privacy).
+
 
 ---
 
