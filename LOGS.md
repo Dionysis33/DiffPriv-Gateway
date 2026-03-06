@@ -52,3 +52,23 @@
 3. **Vasilis (BILLKNITOU)**: Έναρξη νομικής τεκμηρίωσης GDPR και προετοιμασία slide παρουσίασης με τα utility metrics (0.0095).
 
 ---
+
+### 06/03/2026 | Phase 2: Scalability & Multi-Dataset Audit (Tech Lead)
+
+####  Tasks Accomplished
+* **Master Pipeline Development**: Δημιουργία του `SME_Data_Privacy_Scalability.ipynb` για την αυτοματοποιημένη επεξεργασία πολλαπλών datasets.
+* **Modular Refactoring (Issue #7)**: Υλοποίηση κεντρικού συστήματος ρυθμίσεων (`datasets_config`) που επιτρέπει την προσθήκη νέων πηγών δεδομένων χωρίς αλλαγή του κώδικα.
+* **Production-Ready Logic**: Ενσωμάτωση μηχανισμών "Clipping" και "Rounding" στη συνάρτηση Laplace, διασφαλίζοντας ότι τα προστατευμένα δεδομένα παραμένουν εντός επιχειρηματικών ορίων (π.χ. 0-3 για το Priority).
+* **Team Integration & Merge**: 
+    * Επιτυχής συγχώνευση του **Pull Request #8** (@BILLKNITOU) με τη νομική ανάλυση GDPR και το προσχέδιο παρουσίασης.
+    * Ενημέρωση του **Project Wiki** με εξειδικευμένες σελίδες για την Τεχνική Αρχιτεκτονική και τη Βιβλιογραφία.
+* **Performance Validation**: Επιβεβαίωση Utility Score στο `fire.csv` με απόκλιση μόλις **0.0033** μετά το refactoring.
+
+####  Challenges & Solutions
+* **Path & Scope Issues**: Επίλυση σφαλμάτων `KeyError` και `NameError` στο Jupyter περιβάλλον μέσω σωστής αρχικοποίησης μεταβλητών και χρήσης σχετικών διαδρομών (`../data/`).
+* **Non-Fast-Forward Push**: Διαχείριση Git conflicts μέσω `git pull` για το συγχρονισμό των τοπικών αλλαγών με τις νομικές προσθήκες του Βασίλη στο remote.
+
+####  Next Steps
+1. **Athina (Member 2)**: Εκτέλεση Data Profiling στα `adult.csv`, `loans.csv` και `salary.csv` για τον προσδιορισμό του Sensitivity ($\Delta f$).
+2. **Dionysis (Tech Lead)**: Ενημέρωση των παραμέτρων στο Master Pipeline μόλις ολοκληρωθεί το profiling.
+3. **Vasilis (Member 3)**: Ενσωμάτωση των νέων Utility Metrics (από όλα τα datasets) στα τελικά slides της παρουσίασης.
