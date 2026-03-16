@@ -72,3 +72,29 @@
 1. **Athina (Member 2)**: Εκτέλεση Data Profiling στα `adult.csv`, `loans.csv` και `salary.csv` για τον προσδιορισμό του Sensitivity ($\Delta f$).
 2. **Dionysis (Tech Lead)**: Ενημέρωση των παραμέτρων στο Master Pipeline μόλις ολοκληρωθεί το profiling.
 3. **Vasilis (Member 3)**: Ενσωμάτωση των νέων Utility Metrics (από όλα τα datasets) στα τελικά slides της παρουσίασης.
+
+---
+
+### 16/03/2026 | Phase 2: Testing Infrastructure & Production Handover (Tech Lead)
+
+####  Tasks Accomplished
+* **Production-Ready Restructuring (Issue #10)**: 
+    * Πλήρης αναδιοργάνωση του repository σε modular μορφή (μεταφορά της λογικής στο `src/privacy_engine.py`).
+    * Δημιουργία `src/__init__.py` για σωστό package resolution.
+* **Unit Testing Integration (Issue #9 & PR #11)**:
+    * Επιτυχής συγχώνευση (merge) της σουίτας δοκιμών του @BILLKNITOU. 
+    * Επαλήθευση 5 κρίσιμων σεναρίων: Clipping Bounds, Data Integrity, Utility Thresholds, Epsilon Impact και Robustness.
+* **CI/CD Validation**: Επιβεβαίωση ότι το αυτοματοποιημένο workflow (GitHub Actions) εκτελείται επιτυχώς και "πρασινίζει" το build μετά την προσθήκη των tests.
+* **Wiki Documentation Rewrite**:
+    * Πλήρης σύνταξη της σελίδας **Technical Architecture** με την περιγραφή της modular δομής.
+    * Επικαιροποίηση της σελίδας **Technical Implementation** με τη μαθηματική τεκμηρίωση του Laplace Mechanism.
+    * Προσθήκη **Custom Footer** για την ομοιομορφία του documentation.
+
+####  Challenges & Solutions
+* **Import Errors in Testing**: Αντιμετωπίστηκαν προβλήματα στα paths του `pytest` μέσω της προσθήκης του `sys.path.append` και της χρήσης του `__init__.py`.
+* **Collaborative Sync**: Συντονισμός του handover μέσω δομημένων GitHub Comments, διασφαλίζοντας ότι τα μέλη της ομάδας έχουν σαφείς οδηγίες για το documentation.
+
+####  Next Steps
+1. **Athina (@Athina34)**: Οριστικοποίηση του **Privacy Map** (Sensitivity Δf) για τα datasets Adult, Loans και Salary στο Wiki (Issue #6).
+2. **Vasilis (@BILLKNITOU)**: Σύνδεση των test results με την ενότητα **GDPR Accountability** στο Wiki.
+3. **Dionysis (Tech Lead)**: Προετοιμασία του script της Φάσης 3 για την παραγωγή συγκριτικών γραφημάτων (Visualizations).
