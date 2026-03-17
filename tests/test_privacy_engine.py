@@ -1,15 +1,12 @@
-import sys
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
 import pytest
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-
 from src.privacy_engine import apply_laplace_mechanism
 
 
+# Fixture με δείγμα δεδομένων τύπου "fire incidents"
+# Χρησιμοποιείται σε tests όπου η κλίμακα τιμών είναι 0-3.
 @pytest.fixture
 def fire_df():
     return pd.DataFrame(
@@ -20,15 +17,20 @@ def fire_df():
     )
 
 
+# Fixture με αριθμητικά δεδομένα μισθών.
+# Χρησιμοποιείται για να συγκρίνουμε την επίδραση διαφορετικών
+# τιμών epsilon πάνω στον θόρυβο.
 @pytest.fixture
 def salary_df():
     return pd.DataFrame(
         {
-            "Salary": [1000.0, 1100.0, 1200.0, 1300.0, 1250.0, 1150.0]
+            "Salary": [1000.0, 1100.0, 1200.0, 1300.0, 1250.0, 1150.0],
         }
     )
 
 
+# Ελέγχει ότι μετά την εφαρμογή του Laplace mechanism
+# οι τιμές παραμένουν μέσα στα όρια [0, 3] λόγω clipping.
 def test_laplace_clipping_bounds(fire_df):
     np.random.seed(42)
 
@@ -41,10 +43,17 @@ def test_laplace_clipping_bounds(fire_df):
         max_val=3,
     )
 
+    # Πρέπει να έχει δημιουργηθεί το νέο DP column.
     assert "DP_Final Priority" in protected_df.columns
+
+    # Όλες οι τιμές πρέπει να είναι εντός ορίων.
     assert protected_df["DP_Final Priority"].between(0, 3).all()
 
 
+# Ελέγχει ότι:
+# 1. δεν αλλοιώνεται η δομή του αρχικού DataFrame
+# 2. το αρχικό DataFrame μένει ανέπαφο
+# 3. προστίθεται μόνο το νέο DP column στο protected output
 def test_data_integrity_structure_and_dp_column(fire_df):
     np.random.seed(42)
     original_df = fire_df.copy(deep=True)
@@ -58,17 +67,29 @@ def test_data_integrity_structure_and_dp_column(fire_df):
         max_val=3,
     )
 
+    # Το πλήθος γραμμών πρέπει να παραμένει ίδιο.
     assert len(protected_df) == len(original_df)
+
+    # Το αρχικό DataFrame δεν πρέπει να αλλάξει.
     assert list(original_df.columns) == ["Incident ID", "Final Priority"]
+
+    # Το νέο DataFrame πρέπει να έχει το πρόσθετο DP column.
     assert list(protected_df.columns) == [
         "Incident ID",
         "Final Priority",
         "DP_Final Priority",
     ]
+
+    # Το αναγνωριστικό κάθε incident πρέπει να μείνει ακριβώς ίδιο.
     assert protected_df["Incident ID"].equals(original_df["Incident ID"])
+
+    # Το αρχικό DataFrame δεν πρέπει να αποκτήσει νέο column.
     assert "DP_Final Priority" not in original_df.columns
 
 
+# Ελέγχει την "χρησιμότητα" του αποτελέσματος.
+# Με μεγάλο epsilon ο θόρυβος πρέπει να είναι μικρός,
+# άρα ο μέσος όρος δεν πρέπει να αποκλίνει πολύ.
 def test_utility_score_threshold(fire_df):
     np.random.seed(42)
 
@@ -86,9 +107,13 @@ def test_utility_score_threshold(fire_df):
         - protected_df["DP_Final Priority"].mean()
     )
 
+    # Με τόσο μεγάλο epsilon αναμένουμε πολύ μικρή διαφορά.
     assert mean_difference < 0.1
 
 
+# Ελέγχει ότι το epsilon επηρεάζει σωστά το μέγεθος του θορύβου.
+# Μικρό epsilon => περισσότερος θόρυβος
+# Μεγάλο epsilon => λιγότερος θόρυβος
 def test_epsilon_impact_on_noise_variance(salary_df):
     np.random.seed(42)
     protected_low_epsilon = apply_laplace_mechanism(
@@ -114,10 +139,14 @@ def test_epsilon_impact_on_noise_variance(salary_df):
         protected_high_epsilon["DP_Salary"] - salary_df["Salary"]
     ).abs().mean()
 
+    # Το μικρό epsilon πρέπει να δημιουργεί μεγαλύτερη μέση απόκλιση.
     assert low_epsilon_error > high_epsilon_error
 
 
+# Ελέγχει τη συμπεριφορά του συστήματος όταν δοθούν λανθασμένες
+# παράμετροι ή invalid configuration.
 def test_robustness_invalid_configuration_raises_expected_exceptions(fire_df):
+    # Αν το column δεν υπάρχει, περιμένουμε KeyError.
     with pytest.raises(KeyError):
         apply_laplace_mechanism(
             fire_df,
@@ -128,6 +157,7 @@ def test_robustness_invalid_configuration_raises_expected_exceptions(fire_df):
             max_val=3,
         )
 
+    # Αν το epsilon είναι None, περιμένουμε TypeError.
     with pytest.raises(TypeError):
         apply_laplace_mechanism(
             fire_df,
