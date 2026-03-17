@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.privacy_engine import apply_laplace_mechanism
+from src.privacy_engine import (
+    apply_gaussian_mechanism,
+    apply_laplace_mechanism,
+)
 
 
 # Fixture με δείγμα δεδομένων τύπου "fire incidents"
@@ -43,17 +46,14 @@ def test_laplace_clipping_bounds(fire_df):
         max_val=3,
     )
 
-    # Πρέπει να έχει δημιουργηθεί το νέο DP column.
     assert "DP_Final Priority" in protected_df.columns
-
-    # Όλες οι τιμές πρέπει να είναι εντός ορίων.
     assert protected_df["DP_Final Priority"].between(0, 3).all()
 
 
 # Ελέγχει ότι:
-# 1. δεν αλλοιώνεται η δομή του αρχικού DataFrame
-# 2. το αρχικό DataFrame μένει ανέπαφο
-# 3. προστίθεται μόνο το νέο DP column στο protected output
+# - δεν αλλάζει το αρχικό DataFrame
+# - διατηρείται η δομή
+# - προστίθεται σωστά το DP column
 def test_data_integrity_structure_and_dp_column(fire_df):
     np.random.seed(42)
     original_df = fire_df.copy(deep=True)
@@ -67,29 +67,19 @@ def test_data_integrity_structure_and_dp_column(fire_df):
         max_val=3,
     )
 
-    # Το πλήθος γραμμών πρέπει να παραμένει ίδιο.
     assert len(protected_df) == len(original_df)
-
-    # Το αρχικό DataFrame δεν πρέπει να αλλάξει.
     assert list(original_df.columns) == ["Incident ID", "Final Priority"]
-
-    # Το νέο DataFrame πρέπει να έχει το πρόσθετο DP column.
     assert list(protected_df.columns) == [
         "Incident ID",
         "Final Priority",
         "DP_Final Priority",
     ]
-
-    # Το αναγνωριστικό κάθε incident πρέπει να μείνει ακριβώς ίδιο.
     assert protected_df["Incident ID"].equals(original_df["Incident ID"])
-
-    # Το αρχικό DataFrame δεν πρέπει να αποκτήσει νέο column.
     assert "DP_Final Priority" not in original_df.columns
 
 
 # Ελέγχει την "χρησιμότητα" του αποτελέσματος.
-# Με μεγάλο epsilon ο θόρυβος πρέπει να είναι μικρός,
-# άρα ο μέσος όρος δεν πρέπει να αποκλίνει πολύ.
+# Με μεγάλο epsilon ο θόρυβος πρέπει να είναι μικρός.
 def test_utility_score_threshold(fire_df):
     np.random.seed(42)
 
@@ -107,7 +97,6 @@ def test_utility_score_threshold(fire_df):
         - protected_df["DP_Final Priority"].mean()
     )
 
-    # Με τόσο μεγάλο epsilon αναμένουμε πολύ μικρή διαφορά.
     assert mean_difference < 0.1
 
 
@@ -139,14 +128,14 @@ def test_epsilon_impact_on_noise_variance(salary_df):
         protected_high_epsilon["DP_Salary"] - salary_df["Salary"]
     ).abs().mean()
 
-    # Το μικρό epsilon πρέπει να δημιουργεί μεγαλύτερη μέση απόκλιση.
     assert low_epsilon_error > high_epsilon_error
 
 
 # Ελέγχει τη συμπεριφορά του συστήματος όταν δοθούν λανθασμένες
 # παράμετροι ή invalid configuration.
-def test_robustness_invalid_configuration_raises_expected_exceptions(fire_df):
-    # Αν το column δεν υπάρχει, περιμένουμε KeyError.
+def test_robustness_invalid_configuration_raises_expected_exceptions(
+    fire_df,
+):
     with pytest.raises(KeyError):
         apply_laplace_mechanism(
             fire_df,
@@ -157,8 +146,7 @@ def test_robustness_invalid_configuration_raises_expected_exceptions(fire_df):
             max_val=3,
         )
 
-    # Αν το epsilon είναι None, περιμένουμε TypeError.
-    with pytest.raises(TypeError):
+    with pytest.raises(ValueError):
         apply_laplace_mechanism(
             fire_df,
             column="Final Priority",
@@ -166,4 +154,134 @@ def test_robustness_invalid_configuration_raises_expected_exceptions(fire_df):
             sensitivity=3.0,
             min_val=0,
             max_val=3,
+        )
+
+    with pytest.raises(ValueError):
+        apply_laplace_mechanism(
+            fire_df,
+            column="Final Priority",
+            epsilon=0,
+            sensitivity=3.0,
+            min_val=0,
+            max_val=3,
+        )
+
+
+# Ελέγχει ότι το Gaussian mechanism δημιουργεί νέο DP column
+# χωρίς να αλλοιώνει το αρχικό DataFrame.
+def test_gaussian_creates_dp_column_and_preserves_original(fire_df):
+    original_df = fire_df.copy(deep=True)
+
+    protected_df = apply_gaussian_mechanism(
+        fire_df,
+        column="Final Priority",
+        epsilon=1.0,
+        delta=1e-5,
+        sensitivity=3.0,
+        min_val=0,
+        max_val=3,
+        random_state=42,
+    )
+
+    assert "DP_Final Priority" in protected_df.columns
+    assert "DP_Final Priority" not in original_df.columns
+    assert len(protected_df) == len(original_df)
+    assert protected_df["Incident ID"].equals(original_df["Incident ID"])
+
+
+# Ελέγχει ότι το Gaussian mechanism, όταν δοθούν όρια,
+# κρατά τις τιμές μέσα στο επιτρεπτό range.
+def test_gaussian_clipping_bounds(fire_df):
+    protected_df = apply_gaussian_mechanism(
+        fire_df,
+        column="Final Priority",
+        epsilon=1.0,
+        delta=1e-5,
+        sensitivity=3.0,
+        min_val=0,
+        max_val=3,
+        random_state=42,
+    )
+
+    assert protected_df["DP_Final Priority"].between(0, 3).all()
+
+
+# Ελέγχει ότι με σταθερό random_state το Gaussian mechanism
+# είναι reproducible και παράγει το ίδιο αποτέλεσμα.
+def test_gaussian_is_reproducible_with_fixed_random_state(fire_df):
+    protected_df_1 = apply_gaussian_mechanism(
+        fire_df,
+        column="Final Priority",
+        epsilon=1.0,
+        delta=1e-5,
+        sensitivity=3.0,
+        min_val=0,
+        max_val=3,
+        random_state=42,
+    )
+
+    protected_df_2 = apply_gaussian_mechanism(
+        fire_df,
+        column="Final Priority",
+        epsilon=1.0,
+        delta=1e-5,
+        sensitivity=3.0,
+        min_val=0,
+        max_val=3,
+        random_state=42,
+    )
+
+    assert protected_df_1["DP_Final Priority"].equals(
+        protected_df_2["DP_Final Priority"]
+    )
+
+
+# Ελέγχει invalid παραμέτρους για το Gaussian mechanism.
+def test_gaussian_invalid_configuration_raises_expected_exceptions(fire_df):
+    with pytest.raises(KeyError):
+        apply_gaussian_mechanism(
+            fire_df,
+            column="Wrong Column",
+            epsilon=1.0,
+            delta=1e-5,
+            sensitivity=3.0,
+            min_val=0,
+            max_val=3,
+            random_state=42,
+        )
+
+    with pytest.raises(ValueError):
+        apply_gaussian_mechanism(
+            fire_df,
+            column="Final Priority",
+            epsilon=0,
+            delta=1e-5,
+            sensitivity=3.0,
+            min_val=0,
+            max_val=3,
+            random_state=42,
+        )
+
+    with pytest.raises(ValueError):
+        apply_gaussian_mechanism(
+            fire_df,
+            column="Final Priority",
+            epsilon=1.0,
+            delta=0,
+            sensitivity=3.0,
+            min_val=0,
+            max_val=3,
+            random_state=42,
+        )
+
+    with pytest.raises(ValueError):
+        apply_gaussian_mechanism(
+            fire_df,
+            column="Final Priority",
+            epsilon=1.0,
+            delta=1.5,
+            sensitivity=3.0,
+            min_val=0,
+            max_val=3,
+            random_state=42,
         )
