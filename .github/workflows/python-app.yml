@@ -12,6 +12,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
       - uses: actions/checkout@v5
@@ -28,7 +30,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Lint with flake8
-        run: flake8 .
+        run: python -m flake8 .
 
       - name: Test with pytest
-        run: pytest
+        run: python -m pytest
