@@ -98,3 +98,36 @@
 1. **Athina (@Athina34)**: Οριστικοποίηση του **Privacy Map** (Sensitivity Δf) για τα datasets Adult, Loans και Salary στο Wiki (Issue #6).
 2. **Vasilis (@BILLKNITOU)**: Σύνδεση των test results με την ενότητα **GDPR Accountability** στο Wiki.
 3. **Dionysis (Tech Lead)**: Προετοιμασία του script της Φάσης 3 για την παραγωγή συγκριτικών γραφημάτων (Visualizations).
+
+
+---
+
+
+### 18/03/2026 | Phase 3: Team Integration & Final Repository Alignment (Team)
+
+#### Tasks Accomplished
+* Ολοκληρώθηκε και στην πράξη επιβεβαιώθηκε το agreed team workflow:
+  * issue clarification
+  * ξεχωριστό branch ανά task
+  * local validation
+  * draft PR review
+  * merge μετά από team confirmation
+
+* Έγινε merge το implementation του **Gaussian mechanism** (Issue #12 / PR #15).
+* Έγινε merge το **README / terminology alignment** (Issue #13 / PR #16).
+* Έγινε merge το **final sensitivity mapping / SME research update** (Issue #6 / PR #17).
+
+#### Team Contribution Summary
+* **Dionysis**: Gaussian implementation, validation, review coordination.
+* **BILLKNITOU**: README cleanup, terminology alignment, documentation consistency.
+* **Athina34**: final sensitivity mapping, research notebook update, bibliography support.
+
+#### Outcome
+* Το project υποστηρίζει πλέον καθαρά **Laplace** και **Gaussian** mechanisms.
+* Το `README.md` είναι ευθυγραμμισμένο με το actual implemented state.
+* Οι sensitivity τιμές για τα βασικά SME datasets έχουν οριστικοποιηθεί.
+* Το board και το repository history παρέμειναν καθαρά και οργανωμένα.
+
+#### Next Steps
+1. Τελική προετοιμασία παρουσίασης και submission materials.
+2. Έλεγχος συνοχής ανάμεσα σε code, documentation, research και GDPR analysis.
