@@ -131,3 +131,42 @@
 #### Next Steps
 1. Τελική προετοιμασία παρουσίασης και submission materials.
 2. Έλεγχος συνοχής ανάμεσα σε code, documentation, research και GDPR analysis.
+
+
+---
+
+
+### 18/03/2026 | Phase 3: Final Issue Triage & Closeout Planning (Tech Lead)
+
+#### Tasks Accomplished
+* Άνοιξε το **Discussion #18** με θέμα τα **Known Limitations** και το **deferred work after current MVP alignment**, ώστε να καταγραφούν με καθαρό τρόπο τα άμεσα shortcomings και τα post-MVP items.
+* Έγινε πρώτο triage των τελικών ενεργειών του project με σαφή διάκριση ανάμεσα σε:
+  * current MVP closeout tasks,
+  * documentation / setup cleanup,
+  * και future backlog items.
+* Δημιουργήθηκε το private project board **Final issues** για την οργάνωση των τελευταίων tasks της φάσης.
+* Άνοιξε το **Issue #19**:
+  * `[DOCS] Add Known Limitations and Utility Score explanation to Wiki`
+* Άνοιξε το **Issue #20**:
+  * `[TECH] Normalize requirements files and verify clean installation setup`
+* Καταγράφηκε ως **draft / backlog** το μελλοντικό data-oriented item:
+  * `[DATA] Explore automated sensitivity discovery for future Privacy Engine iterations`
+
+#### Team Coordination
+* Η **Athina34** επιβεβαίωσε στο discussion #18 ότι:
+  * το **documentation alignment** είναι first-priority,
+  * το **packaging / setup cleanup** είναι immediate issue,
+  * και το **automated sensitivity discovery** ανήκει στο post-MVP scope.
+* Με βάση αυτό, ορίστηκε καθαρό split ανάμεσα σε active issues και backlog.
+
+#### Challenges & Solutions
+* **Scope Clarity**: Υπήρχε ανάγκη να ξεχωρίσουμε με ακρίβεια τι ανήκει στο current MVP closeout και τι αποτελεί μελλοντική κατεύθυνση.
+  * **Solution**: Δημιουργήθηκε dedicated discussion και ξεχωριστό final board, ώστε να μη μπερδευτούν implementation tasks με meta / planning items.
+* **Project Closure Organization**: Χρειαζόταν πιο καθαρή παρακολούθηση για τα τελευταία tasks χωρίς να χαθεί η συνοχή με το υπάρχον workflow.
+  * **Solution**: Τα active items μεταφέρθηκαν σε issue-driven μορφή και τα μεγαλύτερα future ideas έμειναν ως backlog / draft items.
+
+#### Next Steps
+1. **Athina34**: Ανάληψη και υλοποίηση του Wiki cleanup για `Known Limitations` και utility explanation (Issue #19).
+2. **Dionysis (Tech Lead)**: Cleanup των `requirements.txt` / `requirements-dev.txt` και verification του installation flow (Issue #20).
+3. Παρακολούθηση του `Final issues` board μέχρι το τελικό closeout της φάσης.
+4. Μεταγενέστερη αξιολόγηση του draft item για automated sensitivity discovery σε επόμενο development cycle.
