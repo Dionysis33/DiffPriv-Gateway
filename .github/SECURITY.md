@@ -1,113 +1,116 @@
 # Security Policy for DiffPriv-Gateway
 
-## Overview
+## Επισκόπηση
 
-DiffPriv-Gateway is an open-source privacy-preserving middleware intended to support safer data analytics for SMEs. Because the project is built around Differential Privacy and privacy-aware data processing, both security vulnerabilities and privacy weaknesses are treated as high-priority issues.
+Το DiffPriv-Gateway είναι ένα open-source privacy-preserving middleware, σχεδιασμένο να υποστηρίζει ασφαλέστερο data analytics για μικρομεσαίες επιχειρήσεις (SMEs).  
+Επειδή το project βασίζεται στη Differential Privacy και στην privacy-aware επεξεργασία δεδομένων, τόσο τα ζητήματα ασφάλειας όσο και οι αδυναμίες ιδιωτικότητας αντιμετωπίζονται ως υψηλής προτεραιότητας.
 
-This document explains how to report vulnerabilities and which versions are currently supported with security updates.
+Το παρόν έγγραφο εξηγεί:
+- πώς μπορείτε να αναφέρετε ένα vulnerability
+- ποιες εκδόσεις υποστηρίζονται με security updates
 
 ---
 
-## Supported Versions
+## Υποστηριζόμενες Εκδόσεις
 
-We currently provide security support for the following project versions:
+Αυτή τη στιγμή παρέχεται security support για τις παρακάτω εκδόσεις:
 
 | Version | Supported | Python Version |
 |---------|-----------|----------------|
 | 1.0.x   | ✅ Yes    | 3.12+          |
 | < 1.0.0 | ❌ No     | < 3.12         |
 
-> If you have not published formal releases yet, replace the table above with the currently maintained branch/version.
+> Αν δεν υπάρχουν ακόμη επίσημα releases, προτείνεται να αντικατασταθεί ο παραπάνω πίνακας με αναφορά στο currently maintained branch ή στο current academic MVP version.
 
 ---
 
-## What Should Be Reported
+## Τι πρέπει να αναφέρεται
 
-Please report any vulnerability related to:
+Παρακαλούμε να αναφέρετε οποιοδήποτε vulnerability σχετίζεται με:
 
 - **Privacy leaks**  
-  Weaknesses in the Differential Privacy implementation, including incorrect noise application, epsilon misuse, or privacy budget leakage.
+  Αδυναμίες στην υλοποίηση της Differential Privacy, όπως λανθασμένη εφαρμογή θορύβου, κακή χρήση του epsilon ή διαρροή privacy budget.
 
 - **Data handling issues**  
-  Unsafe parsing, insecure file handling, or improper treatment of input datasets such as CSV files.
+  Μη ασφαλές parsing, ανεπαρκές file handling ή λανθασμένη επεξεργασία input datasets, όπως CSV αρχεία.
 
 - **Dependency risks**  
-  Known vulnerabilities in project dependencies, including libraries such as `diffprivlib`, `pandas`, or related tooling.
+  Γνωστές ευπάθειες σε βιβλιοθήκες και dependencies, όπως `diffprivlib`, `pandas` ή συναφή εργαλεία.
 
-- **Misconfiguration or insecure defaults**  
-  Settings or implementation choices that could expose sensitive data or reduce privacy guarantees.
+- **Misconfiguration / insecure defaults**  
+  Ρυθμίσεις ή επιλογές υλοποίησης που μπορεί να μειώνουν τα privacy guarantees ή να εκθέτουν sensitive data.
 
 ---
 
-## Reporting a Vulnerability
+## Αναφορά Ευπάθειας
 
-Please report vulnerabilities privately and responsibly.
+Παρακαλούμε όλες οι αναφορές να γίνονται ιδιωτικά και υπεύθυνα.
 
-### Contact
+### Επικοινωνία
 
-Send your report to: **[replace-with-real-email@example.com]**  
+Στείλτε την αναφορά σας στο: **[βάλε-εδώ-πραγματικό-email@example.com]**  
 Project lead: **Dionysis33**
 
-### Please include
+### Παρακαλούμε να περιλαμβάνει
 
-- A clear description of the issue
-- Steps to reproduce it
-- A proof of concept (PoC), if available
-- The affected file, module, or component
-- The potential security or privacy impact
-- Any suggested mitigation, if known
+- σαφή περιγραφή του προβλήματος
+- βήματα αναπαραγωγής
+- proof of concept (PoC), αν υπάρχει
+- το affected file, module ή component
+- την πιθανή επίπτωση σε security ή privacy
+- πιθανή πρόταση mitigation, αν είναι γνωστή
 
-### Important
+### Σημαντικό
 
-- **Do not report vulnerabilities through public GitHub Issues**
-- Please allow us time to investigate and prepare a fix before public disclosure
+- **Μην αναφέρετε security vulnerabilities μέσω public GitHub Issues**
+- Παρακαλούμε να δοθεί χρόνος στην ομάδα να διερευνήσει και να προετοιμάσει fix πριν από οποιοδήποτε public disclosure
 
 ---
 
-## Our Response Process
+## Διαδικασία Ανταπόκρισης
 
-We aim to follow this process:
+Στόχος μας είναι να ακολουθούμε την παρακάτω διαδικασία:
 
 1. **Acknowledgment**  
-   We will acknowledge receipt of the report within **48 hours**.
+   Θα επιβεβαιώσουμε την παραλαβή της αναφοράς εντός **48 ωρών**.
 
 2. **Initial triage**  
-   We will assess severity and confirm whether the issue is reproducible.
+   Θα αξιολογήσουμε τη σοβαρότητα και θα ελέγξουμε αν το πρόβλημα είναι reproducible.
 
 3. **Investigation and remediation**  
-   The maintainers will investigate the issue and prepare an appropriate fix.
+   Οι maintainers θα διερευνήσουν το ζήτημα και θα προετοιμάσουν το κατάλληλο fix.
 
 4. **Resolution and disclosure**  
-   Once resolved, we may publish a security advisory and, if requested, credit the reporter.
+   Μετά την επιβεβαίωση της λύσης, ενδέχεται να δημοσιευτεί security advisory και, εφόσον το επιθυμεί ο αναφέρων, να γίνει σχετική αναγνώριση.
 
-If the investigation takes longer than expected, we will provide a status update.
+Αν η διερεύνηση διαρκέσει περισσότερο, θα δοθεί σχετικό status update.
 
 ---
 
-## Severity
+## Σοβαρότητα
 
-The following are treated as **critical**:
+Τα παρακάτω αντιμετωπίζονται ως **critical**:
 
-- Privacy budget overflows
-- Incorrect implementation of Differential Privacy guarantees
-- Data disclosure through statistical outputs
-- Any flaw that could enable re-identification of individuals
+- privacy budget overflows
+- λανθασμένη εφαρμογή των guarantees της Differential Privacy
+- data disclosure μέσω statistical outputs
+- οποιαδήποτε αδυναμία που μπορεί να οδηγήσει σε re-identification ατόμων
 
 ---
 
 ## Responsible Disclosure
 
-We ask all reporters to follow responsible disclosure practices:
+Παρακαλούμε όσους αναφέρουν vulnerabilities να ακολουθούν responsible disclosure πρακτικές:
 
-- Report privately
-- Do not publish exploit details before a fix is available
-- Avoid accessing, modifying, or exfiltrating real user data
+- να κάνουν private report
+- να μην δημοσιεύουν exploit details πριν υπάρξει fix
+- να μην αποκτούν, τροποποιούν ή εξάγουν πραγματικά δεδομένα χρηστών
 
 ---
 
 ## Maintainers
 
-Security reports are currently reviewed by:
+Τα security reports εξετάζονται αυτή τη στιγμή από:
 
 - **Dionysis33**
 - **Athina34**
