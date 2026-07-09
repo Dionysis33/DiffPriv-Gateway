@@ -1,120 +1,78 @@
-# Security Policy for DiffPriv-Gateway
+# Security Policy
 
-## Επισκόπηση
+## Overview
 
-Το DiffPriv-Gateway είναι ένα open-source privacy-preserving middleware, σχεδιασμένο να υποστηρίζει ασφαλέστερο data analytics για μικρομεσαίες επιχειρήσεις (SMEs).  
-Επειδή το project βασίζεται στη Differential Privacy και στην privacy-aware επεξεργασία δεδομένων, τόσο τα ζητήματα ασφάλειας όσο και οι αδυναμίες ιδιωτικότητας αντιμετωπίζονται ως υψηλής προτεραιότητας.
+DiffPriv-Gateway is an open-source Python differential privacy middleware prototype for SME analytics. Because the project deals with privacy-preserving analytical outputs, security reports may include both conventional software vulnerabilities and privacy-specific weaknesses.
 
-Το παρόν έγγραφο εξηγεί:
-- πώς μπορείτε να αναφέρετε ένα vulnerability
-- ποιες εκδόσεις υποστηρίζονται με security updates
+This project reduces disclosure risk for analytical outputs, but it does not remove the need for proper governance, consent, access control, legal review, or production security controls.
 
----
+DiffPriv-Gateway is a technical and educational privacy-engineering project. It is not legal advice and does not guarantee GDPR compliance by itself.
 
-## Υποστηριζόμενες Εκδόσεις
+## Supported Branches and Versions
 
-Αυτή τη στιγμή παρέχεται security support για τις παρακάτω εκδόσεις:
+| Branch / Version | Supported |
+| --- | --- |
+| main | Yes, current maintained branch |
+| older snapshots / forks | No official support |
 
-| Version | Supported | Python Version |
-|---------|-----------|----------------|
-| 1.0.x   | ✅ Yes    | 3.12+          |
-| < 1.0.0 | ❌ No     | < 3.12         |
+## Reporting a Vulnerability
 
-> Αν δεν υπάρχουν ακόμη επίσημα releases, προτείνεται να αντικατασταθεί ο παραπάνω πίνακας με αναφορά στο currently maintained branch ή στο current academic MVP version.
+Please do not open public GitHub issues for security or privacy vulnerabilities.
 
----
+Send vulnerability reports privately to:
 
-## Τι πρέπει να αναφέρεται
+Security contact: Please use GitHub private vulnerability reporting if enabled, or contact the maintainer through the GitHub profile linked to this repository.
 
-Παρακαλούμε να αναφέρετε οποιοδήποτε vulnerability σχετίζεται με:
+Do not include exploit details, sensitive data, or private credentials in public discussions, commits, pull requests, or issues.
 
-- **Privacy leaks**  
-  Αδυναμίες στην υλοποίηση της Differential Privacy, όπως λανθασμένη εφαρμογή θορύβου, κακή χρήση του epsilon ή διαρροή privacy budget.
+## What to Report
 
-- **Data handling issues**  
-  Μη ασφαλές parsing, ανεπαρκές file handling ή λανθασμένη επεξεργασία input datasets, όπως CSV αρχεία.
+Please report issues such as:
 
-- **Dependency risks**  
-  Γνωστές ευπάθειες σε βιβλιοθήκες και dependencies, όπως `diffprivlib`, `pandas` ή συναφή εργαλεία.
+- Privacy leaks in protected outputs.
+- Incorrect differential privacy mechanism behavior.
+- Privacy budget misuse or unsafe parameter handling.
+- Unsafe data handling.
+- Dependency vulnerabilities.
+- Insecure defaults.
+- Accidental exposure of sensitive data.
+- Any behavior that could materially increase re-identification or disclosure risk.
 
-- **Misconfiguration / insecure defaults**  
-  Ρυθμίσεις ή επιλογές υλοποίησης που μπορεί να μειώνουν τα privacy guarantees ή να εκθέτουν sensitive data.
+## What to Include
 
----
+A helpful report should contain:
 
-## Αναφορά Ευπάθειας
+- A clear description of the issue.
+- Steps to reproduce the problem.
+- The affected file, module, or workflow.
+- The expected and actual behavior.
+- The potential security or privacy impact.
+- A proof of concept, if it is safe to share privately.
+- A suggested mitigation, if known.
 
-Παρακαλούμε όλες οι αναφορές να γίνονται ιδιωτικά και υπεύθυνα.
+Please avoid sending real personal data. Use synthetic or minimal demonstration data whenever possible.
 
-### Επικοινωνία
+## Response Timeline
 
-Στείλτε την αναφορά σας στο: **dalexopoulos@nyc.gr**  
-Project lead: **Dionysis33**
+When possible, maintainers aim to:
 
-### Παρακαλούμε να περιλαμβάνει
+1. Acknowledge the report within 48 hours.
+2. Triage and investigate the issue.
+3. Prepare a fix or mitigation when appropriate.
+4. Coordinate responsible disclosure when public communication is appropriate.
 
-- σαφή περιγραφή του προβλήματος
-- βήματα αναπαραγωγής
-- proof of concept (PoC), αν υπάρχει
-- το affected file, module ή component
-- την πιθανή επίπτωση σε security ή privacy
-- πιθανή πρόταση mitigation, αν είναι γνωστή
-
-### Σημαντικό
-
-- **Μην αναφέρετε security vulnerabilities μέσω public GitHub Issues**
-- Παρακαλούμε να δοθεί χρόνος στην ομάδα να διερευνήσει και να προετοιμάσει fix πριν από οποιοδήποτε public disclosure
-
----
-
-## Διαδικασία Ανταπόκρισης
-
-Στόχος μας είναι να ακολουθούμε την παρακάτω διαδικασία:
-
-1. **Acknowledgment**  
-   Θα επιβεβαιώσουμε την παραλαβή της αναφοράς εντός **48 ωρών**.
-
-2. **Initial triage**  
-   Θα αξιολογήσουμε τη σοβαρότητα και θα ελέγξουμε αν το πρόβλημα είναι reproducible.
-
-3. **Investigation and remediation**  
-   Οι maintainers θα διερευνήσουν το ζήτημα και θα προετοιμάσουν το κατάλληλο fix.
-
-4. **Resolution and disclosure**  
-   Μετά την επιβεβαίωση της λύσης, ενδέχεται να δημοσιευτεί security advisory και, εφόσον το επιθυμεί ο αναφέρων, να γίνει σχετική αναγνώριση.
-
-Αν η διερεύνηση διαρκέσει περισσότερο, θα δοθεί σχετικό status update.
-
----
-
-## Σοβαρότητα
-
-Τα παρακάτω αντιμετωπίζονται ως **critical**:
-
-- privacy budget overflows
-- λανθασμένη εφαρμογή των guarantees της Differential Privacy
-- data disclosure μέσω statistical outputs
-- οποιαδήποτε αδυναμία που μπορεί να οδηγήσει σε re-identification ατόμων
-
----
+If investigation takes longer, maintainers may provide status updates as practical.
 
 ## Responsible Disclosure
 
-Παρακαλούμε όσους αναφέρουν vulnerabilities να ακολουθούν responsible disclosure πρακτικές:
+Please give maintainers reasonable time to investigate and address reported issues before public disclosure. Do not publish exploit details or use the issue to access, modify, extract, or expose data that you do not own or have permission to test.
 
-- να κάνουν private report
-- να μην δημοσιεύουν exploit details πριν υπάρξει fix
-- να μην αποκτούν, τροποποιούν ή εξάγουν πραγματικά δεδομένα χρηστών
+Responsible disclosure helps protect users, contributors, and downstream readers of the project.
 
----
+## Privacy-Specific Note
 
-## Maintainers
+Differential privacy can reduce disclosure risk for analytical outputs, but it is only one part of a broader privacy and security program. Any real deployment would still require governance, lawful basis and consent review where applicable, access control, secure infrastructure, monitoring, incident response, and legal review.
 
-Τα security reports εξετάζονται αυτή τη στιγμή από:
+## Last Updated
 
-- **Dionysis33**
-- **Athina34**
-
----
-
-**Last updated:** March 30, 2026
+July 2026

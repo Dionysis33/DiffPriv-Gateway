@@ -1,49 +1,79 @@
-# Contributor Covenant Code of Conduct (Κώδικας Δεοντολογίας)
+# Code of Conduct
 
-## Our Pledge (Η Δέσμευσή μας)
-Ως μέλη και contributors του **DiffPriv-Gateway**, δεσμευόμαστε να διατηρούμε ένα ασφαλές, επαγγελματικό και συνεργατικό περιβάλλον για όλους.
-Η συμμετοχή στο project πρέπει να είναι εμπειρία χωρίς παρενοχλήσεις, αποκλεισμούς ή προσβλητική συμπεριφορά, ανεξάρτητα από επίπεδο εμπειρίας, φύλο, ταυτότητα, υπόβαθρο ή απόψεις.
+## Our Pledge
 
-## Our Standards (Τα Πρότυπά μας)
-Παραδείγματα συμπεριφοράς που ενθαρρύνονται:
-- Χρήση σεβαστικής και συμπεριληπτικής γλώσσας.
-- Εποικοδομητικό feedback σε Issues, Pull Requests και discussions.
-- Σεβασμός στις διαφορετικές απόψεις και προσεγγίσεις.
-- Εστίαση στο τι είναι καλύτερο για το project, την ομάδα και το product quality.
-- Καθαρή τεχνική επικοινωνία με τεκμηρίωση όπου χρειάζεται.
+We as members, contributors, and maintainers of DiffPriv-Gateway pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-Παραδείγματα μη αποδεκτής συμπεριφοράς:
-- Προσβλητικά, ειρωνικά ή υποτιμητικά σχόλια.
-- Προσωπικές επιθέσεις ή επιθετικός τόνος σε code review.
-- Spam, trolling ή σκόπιμη δημιουργία έντασης.
-- Απόρριψη προτάσεων χωρίς τεχνική αιτιολόγηση.
-- Συμπεριφορά που δυσκολεύει τη συνεργασία της ομάδας.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
-## Collaboration Rules (Κανόνες Συνεργασίας)
-Για να λειτουργεί σωστά η ομάδα:
-- Κάθε αλλαγή πρέπει να συνδέεται με Issue ή σαφές task.
-- Η ανάπτυξη γίνεται μέσω branch και Pull Request, όχι με άμεσες ανεξέλεγκτες αλλαγές.
-- Πριν από commit ή push, πρέπει να γίνεται local validation όπου απαιτείται.
-- Τα comments σε PRs και Issues πρέπει να είναι τεχνικά, σαφή και ευγενικά.
-- Οι τελικές τεχνικές αποφάσεις λαμβάνονται μετά από συζήτηση και review.
+## Our Standards
 
-## Enforcement (Εφαρμογή)
-Περιπτώσεις καταχρηστικής, προσβλητικής ή μη αποδεκτής συμπεριφοράς μπορούν να αναφέρονται στον **Tech Lead (Dionysis33)**.
-Οι αναφορές θα εξετάζονται με σοβαρότητα και διακριτικότητα.
+Examples of behavior that contributes to a positive environment include:
 
-Πιθανά enforcement actions μπορεί να περιλαμβάνουν:
-- Προφορική ή γραπτή προειδοποίηση.
-- Περιορισμό συμμετοχής σε discussions ή reviews.
-- Αφαίρεση πρόσβασης από συνεργατικά workflows του project.
-- Περαιτέρω μέτρα αν η συμπεριφορά συνεχιστεί.
+- Demonstrating empathy and kindness toward other people.
+- Being respectful of differing opinions, viewpoints, and experiences.
+- Giving and gracefully accepting constructive feedback.
+- Accepting responsibility and apologizing to those affected by mistakes.
+- Focusing on what is best for the overall community and project.
+- Communicating clearly and professionally in issues, pull requests, reviews, and discussions.
 
-## Scope (Πεδίο Εφαρμογής)
-Ο παρών Code of Conduct ισχύει για:
-- GitHub Issues
-- Pull Requests
-- Code Reviews
-- Discussions σχετικές με το project
-- Team communication που αφορά το DiffPriv-Gateway
+Examples of unacceptable behavior include:
 
-## Final Note (Τελική Σημείωση)
-Στόχος μας είναι ένα repository με υψηλή τεχνική ποιότητα, καθαρή συνεργασία και επαγγελματική ομαδική κουλτούρα.
+- The use of sexualized language or imagery, and sexual attention or advances of any kind.
+- Trolling, insulting or derogatory comments, and personal or political attacks.
+- Public or private harassment.
+- Publishing another person's private information, such as a physical or email address, without explicit permission.
+- Sharing private project communications without permission.
+- Other conduct that could reasonably be considered inappropriate in a professional setting.
+
+## Enforcement Responsibilities
+
+Project maintainers are responsible for clarifying and enforcing standards of acceptable behavior. Maintainers may take appropriate and fair corrective action in response to behavior that they consider inappropriate, threatening, offensive, or harmful.
+
+Maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, pull requests, and other contributions that are not aligned with this Code of Conduct. They may also temporarily or permanently ban contributors for behavior that they consider inappropriate, threatening, offensive, or harmful.
+
+## Scope
+
+This Code of Conduct applies within all project spaces, including GitHub issues, pull requests, code reviews, discussions, documentation, and other project-related communication channels.
+
+It also applies when an individual is officially representing the project in public spaces, such as using an official project account, posting through an official channel, or acting as an appointed project representative.
+
+## Reporting and Enforcement Contact
+
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to:
+
+Reports may be sent to the project maintainer through the GitHub profile linked to this repository.
+
+All reports will be reviewed and investigated promptly and fairly. Maintainers are expected to respect the privacy and security of the reporter.
+
+## Enforcement Guidelines
+
+Maintainers will follow these Community Impact Guidelines when determining consequences for actions they consider in violation of this Code of Conduct.
+
+### 1. Correction
+
+Community Impact: Use of inappropriate language or other behavior considered unprofessional or unwelcome in the community.
+
+Consequence: A private, written warning from maintainers, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+
+### 2. Warning
+
+Community Impact: A violation through a single incident or series of actions.
+
+Consequence: A warning with consequences for continued behavior. The individual may be asked to avoid interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. Continued violations may lead to a temporary or permanent ban.
+
+### 3. Temporary Ban
+
+Community Impact: A serious violation of community standards, including sustained inappropriate behavior.
+
+Consequence: A temporary ban from interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
+
+### 4. Permanent Ban
+
+Community Impact: A pattern of violating community standards, including sustained inappropriate behavior, harassment, or aggression toward individuals or groups.
+
+Consequence: A permanent ban from public interaction within the project community.
+
+## Attribution
+
+This Code of Conduct is adapted from the Contributor Covenant, version 2.1, available at https://www.contributor-covenant.org/version/2/1/code_of_conduct/.

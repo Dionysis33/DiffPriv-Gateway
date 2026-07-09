@@ -1,12 +1,45 @@
-# Support Information (Υποστήριξη)
+# Support
 
-Ευχαριστούμε που χρησιμοποιείτε το **DiffPriv-Gateway**! Αν αντιμετωπίσετε προβλήματα, ακολουθήστε τα παρακάτω βήματα:
+Thank you for using DiffPriv-Gateway. This page explains where to find documentation, ask questions, report bugs, and handle security or privacy concerns.
 
-## 1. Documentation (Τεκμηρίωση)
-Πριν ζητήσετε βοήθεια, παρακαλούμε ελέγξτε το επίσημο [Wiki](https://github.com/Dionysis33/DiffPriv-Gateway/wiki) του project για τεχνικές λεπτομέρειες.
+DiffPriv-Gateway is a technical and educational privacy-engineering project. It is not legal advice and does not guarantee GDPR compliance by itself.
 
-## 2. GitHub Issues
-Για αναφορά bugs ή προτάσεις νέων χαρακτηριστικών, παρακαλούμε ανοίξτε ένα **New Issue** χρησιμοποιώντας τα διαθέσιμα templates.
+## Documentation / Wiki
 
-## 3. Contact (Επικοινωνία)
-Για ερευνητικά ερωτήματα σχετικά με την εφαρμογή της Διαφορικής Ιδιωτικότητας (Differential Privacy) σε Μικρομεσαίες Επιχειρήσεις, μπορείτε να επικοινωνήσετε με την ομάδα μέσω του GitHub Discussion.
+Start with the project documentation:
+
+- [README.md](../README.md)
+- [docs/](../docs/)
+- [Project Wiki](https://github.com/Dionysis33/DiffPriv-Gateway/wiki)
+
+These resources cover setup, project scope, differential privacy workflow, testing, and GDPR-oriented documentation.
+
+## Bug Reports and Feature Requests
+
+Use [GitHub Issues](https://github.com/Dionysis33/DiffPriv-Gateway/issues) for:
+
+- Reproducible bugs.
+- Focused feature requests.
+- Documentation issues.
+- Test or validation gaps.
+
+When opening an issue, include a clear description, expected behavior, actual behavior, steps to reproduce, and relevant environment details. Do not include real personal data, secrets, API keys, private credentials, or sensitive datasets.
+
+## Questions
+
+Use [GitHub Discussions](https://github.com/Dionysis33/DiffPriv-Gateway/discussions) for:
+
+- General project questions.
+- Usage questions.
+- Differential privacy design questions.
+- Ideas that are not yet ready for a formal issue.
+
+## Security and Privacy Vulnerabilities
+
+Security and privacy vulnerabilities should not be reported publicly. Do not open public GitHub issues for vulnerabilities, privacy leaks, unsafe data handling, or accidental exposure of sensitive data.
+
+Follow the reporting process in [SECURITY.md](SECURITY.md).
+
+Security contact: Please use GitHub private vulnerability reporting if enabled, or contact the maintainer through the GitHub profile linked to this repository.
+
+Reports may be sent to the project maintainer through the GitHub profile linked to this repository.

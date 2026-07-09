@@ -1,168 +1,138 @@
-# Οδηγός Συνεισφοράς στο DiffPriv-Gateway
+# Contributing to DiffPriv-Gateway
 
-Καλωσορίζουμε contributions στο **DiffPriv-Gateway**.  
-Ο παρών οδηγός περιγράφει το **working agreement** της ομάδας, ώστε το development, το review και το documentation να γίνονται με σταθερό, καθαρό και επαγγελματικό τρόπο.
+Thank you for your interest in contributing to DiffPriv-Gateway. This project is an open-source Python differential privacy middleware prototype for SME analytics, with a focus on privacy-aware data processing, automated validation, and clear documentation.
 
-> Το `CONTRIBUTING.md` είναι το **canonical source** για τους collaboration rules του repository.
+Please keep contributions practical, focused, and aligned with the repository scope.
 
----
+## Ways to Contribute
 
-## Σκοπός
+Useful contributions include:
 
-Το repository ακολουθεί workflow με έμφαση σε:
+- Bug reports with clear reproduction steps.
+- Documentation improvements.
+- Tests for existing behavior.
+- Privacy mechanism validation.
+- Code quality improvements that keep behavior stable.
+- Small refactors that improve readability without changing project scope.
 
-- καθαρό **issue-driven development**
-- σαφές **scope**
-- σταθερό **CI**
-- ελεγχόμενο **review process**
-- σωστή ευθυγράμμιση ανάμεσα σε **implementation**, **tests** και **documentation**
+## Before Contributing
 
----
+Before opening a pull request:
 
-## Πριν ξεκινήσετε
+1. Check existing issues and pull requests for related work.
+2. Create a focused issue when a discussion or design decision is needed.
+3. Keep one logical change per pull request.
+4. Avoid unrelated formatting, workflow, asset, notebook, or license changes.
+5. Do not commit real personal data, secrets, or private credentials.
 
-Πριν γράψετε κώδικα:
+## Branch Naming
 
-1. Ελέγξτε αν υπάρχει ήδη σχετικό **Issue**
-2. Αν δεν υπάρχει, ανοίξτε νέο Issue με:
-   - σαφές **Summary**
-   - σύντομο **Why**
-   - συγκεκριμένο **Scope**
-   - μετρήσιμα **Acceptance Criteria**
-3. Συνδέστε το task με το κατάλληλο **Project board item**
-4. Ορίστε σωστά:
-   - **labels**
-   - **priority**
-   - **milestone**
-   - **status**
+Use short, descriptive branch names:
 
----
+- `feature/short-description`
+- `fix/short-description`
+- `docs/short-description`
+- `test/short-description`
+- `refactor/short-description`
 
-## Issue Rules
-
-Κάθε Issue πρέπει να έχει **ένα καθαρό scope**.
-
-### Issue structure
-Κάθε νέο issue πρέπει ιδανικά να περιλαμβάνει:
-
-- `Summary`
-- `Why`
-- `Scope`
-- `Acceptance Criteria`
-- `Notes`, όπου χρειάζεται
-- `Dependency`, αν εξαρτάται από άλλο task
-
-### One issue = one scope
-Αποφύγετε να συνδυάζετε στο ίδιο issue:
-
-- implementation
-- documentation alignment
-- refactor
-- test cleanup
-- workflow / meta discussion
-
-Αν ένα task μεγαλώσει υπερβολικά, σπάστε το σε μικρότερα issues ή sub-issues.
-
-### Prefixes
-Χρησιμοποιούμε prefixes για να φαίνεται άμεσα το είδος της δουλειάς:
-
-- `[TECH]` για implementation / engineering work
-- `[DOCS]` για documentation work
-- `[TEST]` για tests / QA / validation
-- `[DATA]` για dataset / data work
-- `[META]` για workflow / process / communication topics
-- `[REFACTOR]` για code cleanup χωρίς αλλαγή behavior
-
----
-
-## Labels
-
-Χρησιμοποιείτε labels με συνέπεια, ώστε να είναι καθαρό τι είδους δουλειά είναι κάθε issue.
-
-### Recommended labels
-- `tech`
-- `backend`
-- `documentation`
-- `test`
-- `data`
-- `enhancement`
-- `bug`
-- `blocked`
-- `mvp`
-- `high priority`
-- `medium priority`
-- `low priority`
-
-### Label guidance
-- `tech`: core implementation / engineering work
-- `backend`: server-side / core Python code
-- `documentation`: README, LOGS, CONTRIBUTING, project docs
-- `test`: unit tests, integration tests, validation
-- `data`: dataset handling, schemas, sensitive features, preprocessing
-- `enhancement`: νέα δυνατότητα ή feature extension
-- `bug`: μη αναμενόμενη συμπεριφορά ή broken flow
-- `blocked`: εξάρτηση από άλλο issue, decision ή review
-- `mvp`: σχετίζεται άμεσα με το current MVP scope
-- priority labels: δηλώνουν επείγον και execution order
-
----
-
-## Branching Strategy
-
-Κάθε αλλαγή πρέπει να γίνεται σε ξεχωριστό branch.
-
-### Branch naming convention
-- `feature/<issue-number>-short-name`
-- `fix/<issue-number>-short-name`
-- `docs/<issue-number>-short-name`
-- `refactor/<issue-number>-short-name`
-- `test/<issue-number>-short-name`
-- `meta/<issue-number>-short-name`
-
-### Παραδείγματα
-- `feature/12-gaussian-mechanism`
-- `docs/13-readme-alignment`
-- `fix/21-ci-import-path`
-- `test/18-privacy-engine-coverage`
-- `meta/14-working-agreement-review`
-
----
-
-## Project Board Rules
-
-Όλα τα ενεργά tasks πρέπει να φαίνονται σωστά στο **Project board**.
-
-### Status usage
-- **Backlog**: το task υπάρχει αλλά δεν έχει ξεκινήσει
-- **Ready**: το task είναι καθαρό και μπορεί να αναληφθεί
-- **In progress**: υπάρχει ενεργό implementation / execution work
-- **In review**: έχει ανοίξει PR ή περιμένει review / validation
-- **Done**: έχει γίνει merge και το CI είναι πράσινο
-
-### Board discipline
-- Μην αφήνετε task σε λάθος status
-- Κάθε item πρέπει να έχει **assignee**
-- Κάθε item πρέπει να έχει σωστό **priority**
-- Αν υπάρχει dependency, δηλώστε το στα **Relationships**
-- Αν ένα task δεν μπορεί να προχωρήσει, βάλτε label `blocked`
-
----
-
-## Development Workflow
-
-### 1. Pick up issue
-Ο assignee αναλαμβάνει το issue και το μετακινεί στο σωστό status στο board.
-
-### 2. Create branch
-Δημιουργήστε branch από το `main`.
-
-### 3. Implement in small steps
-Κρατήστε το scope περιορισμένο στο συγκεκριμένο issue.  
-Αποφύγετε άσχετες αλλαγές στο ίδιο branch.
-
-### 4. Validate locally
-Πριν από κάθε commit ή push, τρέξτε τοπικά:
+Examples:
 
 ```bash
-python -m flake8 .
-python -m pytest
+feature/add-query-validation
+fix/handle-invalid-epsilon
+docs/readme-quick-start
+test/privacy-engine-validation
+refactor/privacy-engine-helpers
+```
+
+## Local Setup
+
+Create and activate a virtual environment.
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Linux and macOS:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
+
+## Validation Commands
+
+Run tests:
+
+```bash
+python -m pytest -v
+```
+
+Run linting:
+
+```bash
+python -m flake8 --exclude=.venv,__pycache__ main.py src tests
+```
+
+Both commands should pass before opening a pull request.
+
+## Commit Messages
+
+Use concise commit messages that describe the change:
+
+```bash
+feat: add gaussian mechanism support
+fix: handle invalid epsilon values
+docs: improve README quick start
+test: extend privacy engine validation
+```
+
+## Pull Request Checklist
+
+Before requesting review, confirm that:
+
+- The scope is focused.
+- Tests pass locally.
+- Linting passes locally.
+- Documentation is updated if behavior changed.
+- No real or sensitive data is committed.
+- No secrets, API keys, private credentials, or local environment files are included.
+- The pull request explains the reason for the change and any validation performed.
+
+## Privacy and Data Rules
+
+DiffPriv-Gateway is a privacy-engineering project, so data handling matters even in examples and tests.
+
+- Do not commit real personal data.
+- Use synthetic or demo data only.
+- Do not include private customer, employee, financial, health, or operational datasets.
+- Do not expose secrets, API keys, access tokens, passwords, or private credentials.
+- Keep proof-of-concept examples safe and minimal.
+- Report security or privacy vulnerabilities privately, not through public issues.
+
+## Code Style
+
+Please keep code changes readable and maintainable:
+
+- Write clear Python with explicit validation.
+- Prefer small functions with focused responsibilities.
+- Keep privacy parameters and assumptions visible.
+- Add meaningful tests for behavior changes.
+- Avoid unnecessary abstractions or unrelated rewrites.
+- Follow the existing project structure.
+
+## Community and Security
+
+All participants are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+For security and privacy vulnerability reporting, see the [Security Policy](SECURITY.md).
