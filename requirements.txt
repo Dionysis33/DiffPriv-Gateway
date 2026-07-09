@@ -1,3 +1,4 @@
 pandas
 numpy
 diffprivlib
+scikit-learn==1.7.2
