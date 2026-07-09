@@ -210,7 +210,7 @@ Please do not report security or privacy vulnerabilities through public GitHub i
 
 ## Support
 
-For documentation, questions, bug reports, feature requests, and security or privacy reporting guidance, see [.github/SUPPORT.md](.github/SUPPORT.md).
+For documentation, questions, bug reports, feature requests, and security or privacy reporting guidance, see the [Support guide](.github/SUPPORT.md).
 
 ## License
 
